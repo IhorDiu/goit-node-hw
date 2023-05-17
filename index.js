@@ -1,4 +1,16 @@
+const {program} = require("commander");
 const contactsList = require("./contacts.js");
+
+program
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
+
+  program.parse();
+
+const options = program.opts();
 
 const invokeAction = async ({
   action,
@@ -39,10 +51,8 @@ const invokeAction = async ({
   }
 };
 
+invokeAction(options);
 // invokeAction ({action: "list"})
 // invokeAction({ action: "get", id: "dffghj" });
 // invokeAction({ action: "add", name: "Maks Shepard", email: "maks.shepard@mail.com", phone: "(050) 555-55555" });
-invokeAction({
-  action: "remove",
-  id: "uXquaLwYYALwH-9OuW",
-});
+// invokeAction({action: "remove", id: "uXquaLwYYALwH-9OuW",});
