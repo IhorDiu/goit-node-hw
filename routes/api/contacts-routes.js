@@ -6,7 +6,7 @@ const { isValidId, validateFavorite } = require("../../middlewares");
 
 const { schemas } = require("../../models/contact");
 
-const { validateBody } = require("../../decorators");
+const { validateBody } = require("../../utils");
 
 const router = express.Router();
 
