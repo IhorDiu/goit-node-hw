@@ -25,7 +25,7 @@ const userSchema = new Schema(
     },
     token: String,
   },
-  { versionKey: false, timestams: true }
+  { versionKey: false, timestamps: true }
 );
 
 userSchema.post("save", handleMongooseError);
