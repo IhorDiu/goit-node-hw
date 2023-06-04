@@ -1,6 +1,6 @@
 const express = require("express");
 
-const contactsController = require("../../controllers/contacts-controllers");
+const contactsController = require("../../controllers/contacts");
 
 const { isValidId, validateFavorite } = require("../../middlewares");
 
