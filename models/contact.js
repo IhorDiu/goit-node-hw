@@ -46,18 +46,18 @@ const contactAddSchema = Joi.object({
         "missing required phone field. supports the following formats: (###) ###-#### "
       )
     ),
-    favorite: Joi.boolean(),
+  favorite: Joi.boolean(),
 });
 
-const updateFavoriteSchema = Joi.object ({
+const updateFavoriteSchema = Joi.object({
   favorite: Joi.boolean().required(),
-})
+});
 
 const schemas = {
   contactAddSchema,
-  updateFavoriteSchema
-}
+  updateFavoriteSchema,
+};
 
 const Contact = model("contact", contactSchema);
 
-module.exports = {Contact, schemas};
+module.exports = { Contact, schemas };
