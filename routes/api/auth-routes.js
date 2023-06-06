@@ -19,6 +19,10 @@ router.post(
 
 // signin
 router.post("/login", validateBody(schemas.loginSchema), authControllers.login);
-router.get("/current", authenticate, authControllers.getCurrent)
+
+router.get("/current", authenticate, authControllers.getCurrent);
+
+router.post("/logout", authenticate, authControllers.logout)
+
 
 module.exports = router;
