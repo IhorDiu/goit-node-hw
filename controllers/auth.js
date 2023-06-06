@@ -22,8 +22,8 @@ const register = async (req, res) => {
   res.status(201).json({
     user: {
       email: newUser.email,
-      subscription: newUser.subscription
-    }
+      subscription: newUser.subscription,
+    },
   });
 };
 
@@ -46,14 +46,24 @@ const login = async (req, res) => {
 
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "23h" });
 
-  res.json({ token,
-  user: {
-    email: user.email,
-    subscription: user.subscription
-  } });
+  res.json({
+    token,
+    user: {
+      email: user.email,
+      subscription: user.subscription,
+    },
+  });
+};
+
+const getCurrent = async (req, res) => {
+  const { email } = req.user;
+  res.json({
+    email,
+  });
 };
 
 module.exports = {
   register: ctrlWrapper(register),
   login: ctrlWrapper(login),
+  getCurrent: ctrlWrapper(getCurrent),
 };
