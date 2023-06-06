@@ -29,3 +29,19 @@
 - `npm run start:dev` &mdash; старт сервера в режимі розробки (development)
 - `npm run lint` &mdash; запустити виконання перевірки коду з eslint, необхідно виконувати перед кожним PR та виправляти всі помилки лінтера
 - `npm lint:fix` &mdash; та ж перевірка лінтера, але з автоматичними виправленнями простих помилок
+
+
+1. User 1
+{
+    "password": "123456",
+
+    "email": "cat@mail.com"
+}
+
+2. User 2
+
+{
+    "password": "123456",
+
+"email": "dude@mail.com"
+}
