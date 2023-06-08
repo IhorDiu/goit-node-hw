@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
-const { handleMongooseError } = require("../helpers");
+const { handleMongooseError } = require("../utils");
 
 const phoneRegexp = /^\(\d{3}\)\s\d{3}-\d{4}/;
 
@@ -25,6 +25,11 @@ const contactSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
   },
   { versionKey: false, timestamps: true }
 );
@@ -46,18 +51,18 @@ const contactAddSchema = Joi.object({
         "missing required phone field. supports the following formats: (###) ###-#### "
       )
     ),
-    favorite: Joi.boolean(),
+  favorite: Joi.boolean(),
 });
 
-const updateFavoriteSchema = Joi.object ({
+const updateFavoriteSchema = Joi.object({
   favorite: Joi.boolean().required(),
-})
+});
 
 const schemas = {
   contactAddSchema,
-  updateFavoriteSchema
-}
+  updateFavoriteSchema,
+};
 
 const Contact = model("contact", contactSchema);
 
-module.exports = {Contact, schemas};
+module.exports = { Contact, schemas };

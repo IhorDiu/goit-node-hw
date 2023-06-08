@@ -2,13 +2,19 @@ const express = require("express");
 
 const contactsController = require("../../controllers/contacts");
 
-const { isValidId, validateFavorite } = require("../../middlewares");
+const {
+  isValidId,
+  validateFavorite,
+  authenticate,
+} = require("../../middlewares");
 
 const { schemas } = require("../../models/contact");
 
-const { validateBody } = require("../../decorators");
+const { validateBody } = require("../../utils");
 
 const router = express.Router();
+
+router.use(authenticate); 
 
 router.get("/", contactsController.getAllContacts);
 
