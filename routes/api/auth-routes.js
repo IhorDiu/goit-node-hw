@@ -2,7 +2,11 @@ const express = require("express");
 
 const authControllers = require("../../controllers/users");
 
-const { authenticate, validateSubscription } = require("../../middlewares");
+const {
+  authenticate,
+  validateSubscription,
+  upload,
+} = require("../../middlewares");
 
 const { validateBody } = require("../../utils");
 
@@ -13,6 +17,7 @@ const router = express.Router();
 // signup
 router.post(
   "/register",
+  upload.single("avatar"),
   validateBody(schemas.registerSchema),
   authControllers.register
 );
@@ -29,6 +34,13 @@ router.patch(
   authenticate,
   validateSubscription(schemas.updateSubscriptionSchema),
   authControllers.subscription
+);
+
+router.patch(
+  "/avatars",
+  authenticate,
+  upload.single("avatar"),
+  authControllers.updateAvatar
 );
 
 module.exports = router;
